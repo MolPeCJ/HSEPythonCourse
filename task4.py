@@ -6,10 +6,10 @@ Task4: Количество уникальных гласных
 row1 = 'ауеив' # 4
 row2 = 'ааааа' # 1
 
-vowels = list(set('ауoыэяюёие'))
-
-def task4(row):
-    letters = list(set(row))
+def task4(s: str) -> int:
+    vowels = list(set('ауoыэяюёие'))
+    
+    letters = list(set(s))
     count = 0
 
     for letter in letters:
@@ -17,6 +17,8 @@ def task4(row):
             count += 1
     
     return count
+
+# Проверки
 
 print(task4(row1))
 print(task4(row2))

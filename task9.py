@@ -4,12 +4,11 @@ Task 9: Спираль
 выходящей из левого верхнего угла и закрученной по часовой стрелке.
 """
 
-import numpy as np
+n1 = 4
+n2 = 6
 
-n = 7
-
-def task9(n):
-    z = np.zeros((n, n))
+def task9(n: int) -> None:
+    z = [[0]*n for _ in range(n)]
     counter = 1
     dop = 0
 
@@ -18,35 +17,30 @@ def task9(n):
         for j in range(n - i - dop):
             z[i][j + dop] = counter
             counter += 1
-
-        print(str(i) + '.1')
-        print(z)
         
         for j in range(i + 1, n - i):
             z[j][n - 1 - i] = counter
             counter += 1
         
-        print(str(i) + '.2')
-        print(z)
-
         for j in range(i + 1, n - i):
             if j == n:
                 continue
             z[n - 1 - i][n - 1 - j] = counter
             counter += 1
-        
-        print(str(i) + '.3')
-        print(z)
 
         for j in range(i + 1, n - i - dop):
             if j == n - 1 - dop:
                 continue
             z[n - 1 - j][i] = counter
             counter += 1
-
-        print(str(i) + '.4')
-        print(z)
-
+        
         dop += 1
 
-task9(n)
+    for row in z:
+        print(*row)
+
+# Проверки
+
+task9(n1)
+print('-----')
+task9(n2)

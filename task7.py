@@ -9,8 +9,8 @@ from collections import Counter
 row1 = 'aab'    # 3
 row2 = 'abcdba' # 5
     
-def task7(row):
-    chars_count = Counter(row)
+def task7(s: str) -> int:
+    chars_count = Counter(s)
     length = 0
     has_odd = False
 
@@ -25,6 +25,8 @@ def task7(row):
         length += 1
 
     return length
+
+# Проверки
 
 print(task7(row1))
 print(task7(row2))

@@ -6,7 +6,8 @@ Task8: Дополнить класс расчетом метрик
 
 from typing import Union, List, Tuple
 import numpy as np
-import scipy.stats as ss
+
+values = [1, 1, 51, 1234, 401, -2100, -2100, 123, 4, 4, 1234, -2100]
 
 class Statistics:
     def __init__(self, data: Union[List[int|float], Tuple[int|float], np.ndarray[int|float]]):
@@ -39,7 +40,14 @@ class Statistics:
         data = [1,2,3]
         out: 3
         """
-        return ss.mode(self).mode
+        mode, count = np.unique(self, return_counts = True)
+        max_value = float('-inf')
+
+        for i in range (len(mode)):
+            if count[i] == max(count) and mode[i] > max_value:
+                max_value = mode[i]
+        
+        return max_value
     
     def std(self) -> float | int:
         # считаем стандартное отклонение (не дисперсию)
@@ -48,3 +56,11 @@ class Statistics:
     def iqr(self) -> float | int:
         # считаем интерквартильный размах: https://shorturl.at/rsuBK
         return np.percentile(self, 75) - np.percentile(self, 25)
+    
+# Проверки
+
+print('Cредняя:', Statistics.calculate_mean(values))
+print('Медиана:', Statistics.calculate_median(values))
+print('Мода:', Statistics.calculate_mode(values))
+print('Стандартное отклонение:', Statistics.std(values))
+print('Интерквартильный размах:', Statistics.iqr(values))

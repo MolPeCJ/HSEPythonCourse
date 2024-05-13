@@ -6,8 +6,10 @@ Task5: Палиндром
 row1 = 'acbca' # True
 row2 = 'ab'    # False
 
-def task5(row):
-    return True if row == row[::-1] else False
+def task5(s: str) -> bool:
+    return True if s == s[::-1] else False
+
+# Проверки
 
 print(task5(row1))
 print(task5(row2))

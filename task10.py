@@ -9,16 +9,24 @@ import scipy.spatial as ss
 
 example = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9], [-2, 5, 4]])
 
-z = np.eye((len(example)))
+def task10(matrix: np.ndarray) -> np.ndarray:
+    z = np.eye((len(matrix)))
 
-for i in range(len(z)):
-    for j in range(len(z)):
-        z[i][j] = ss.distance.euclidean(example[i], example[j])
+    for i in range(len(z)):
+        for j in range(len(z)):
+            z[i][j] = ss.distance.euclidean(matrix[i], matrix[j])
 
-print(z)
+    print(z)
 
-# Алтернативное решение
+# Альтернативное решение
 
-dist_matrix = ss.distance_matrix(example, example)
+def task10_1(matrix: np.ndarray) -> np.ndarray:
+    dist_matrix = ss.distance_matrix(matrix, matrix)
 
-print(dist_matrix)
+    print(dist_matrix)
+
+# Проверки
+
+task10(example)
+print('-----')
+task10_1(example)

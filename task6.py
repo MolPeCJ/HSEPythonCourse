@@ -7,8 +7,8 @@ row1 = 'cdaaabca' # 3
 row2 = 'ab'       # 1
 row3 = 'aaaaaab'  # 6
 
-def task6(row):
-    letters = list(row)
+def task6(s: str) -> int:
+    letters = list(s)
     rows = []
     
     if len(letters) == 1:
@@ -27,6 +27,8 @@ def task6(row):
         return max(rows)
     else:
         return 1
+
+# Проверки
 
 print(task6(row1))
 print(task6(row2))
